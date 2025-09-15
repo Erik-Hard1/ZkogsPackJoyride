@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://be2w1m0lk6ihy"]
+
+[ext_resource type="PackedScene" uid="uid://1cfqcsf1c8ap" path="res://zkogs.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bma4x736f3vks" path="res://Beam.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://brxj6v5vi6oyo" path="res://floor.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="4_1bvp3"]
+
+[node name="Main" type="Node"]
+
+[node name="Game" type="Node" parent="."]
+
+[node name="Zkogs" parent="Game" instance=ExtResource("1_ig7tw")]
+position = Vector2(243, 216)
+
+[node name="StaticBody2D" parent="Game" instance=ExtResource("2_0xm2m")]
+position = Vector2(491, 55)
+
+[node name="StaticBody2D2" parent="Game" instance=ExtResource("2_0xm2m")]
+position = Vector2(647, 286)
+
+[node name="Floor" parent="Game" instance=ExtResource("3_h2yge")]
+position = Vector2(33, 426)
+
+[node name="Ceiling" parent="Game" instance=ExtResource("3_h2yge")]
+position = Vector2(32, 2)
+
+[node name="Long Laser" parent="Game" instance=ExtResource("4_1bvp3")]
+position = Vector2(802, 149)

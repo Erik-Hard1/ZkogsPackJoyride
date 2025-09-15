@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://brxj6v5vi6oyo"]
+
+[ext_resource type="Texture2D" uid="uid://prnbropptpk2" path="res://Metalflor.png" id="1_oj3tl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgngl"]
+size = Vector2(675, 70)
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(309, 0)
+scale = Vector2(10.6563, 1)
+texture = ExtResource("1_oj3tl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(307.5, 0)
+shape = SubResource("RectangleShape2D_cgngl")
