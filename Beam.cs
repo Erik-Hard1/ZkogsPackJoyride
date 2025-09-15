@@ -1,4 +1,4 @@
-ddwedewafwusing Godot;
+using Godot;
 using System;
 
 public partial class Beam : StaticBody2D
