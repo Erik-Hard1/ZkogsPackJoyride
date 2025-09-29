@@ -3,6 +3,8 @@ using System;
 
 public partial class Zkogs : CharacterBody2D
 {
+	[Signal]
+	public delegate void StarPickUpEventHandler();
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -50.0f;
 
@@ -13,7 +15,7 @@ public partial class Zkogs : CharacterBody2D
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
-			velocity += GetGravity()* (float)1.38 * (float)delta;
+			velocity += GetGravity() * (float)1.38 * (float)delta;
 		}
 
 		// Handle Jump.
@@ -37,4 +39,14 @@ public partial class Zkogs : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	public void OnStarZoneAreaEntered(Area2D area2d)
+	{
+		if (area2d is Star)
+		{
+			//GD.Print("Star Picked Up");
+			EmitSignal(SignalName.StarPickUp);
+			area2d.QueueFree();
+		}
+	}
+
 }

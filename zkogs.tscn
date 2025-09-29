@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://1cfqcsf1c8ap"]
+[gd_scene load_steps=5 format=3 uid="uid://1cfqcsf1c8ap"]
 
 [ext_resource type="Texture2D" uid="uid://csdul61qbxn48" path="res://Main Character.png" id="1_inlcd"]
 [ext_resource type="Script" uid="uid://c6okje0aywjt4" path="res://Zkogs.cs" id="1_xlnyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlnyc"]
 size = Vector2(11, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djw8q"]
+size = Vector2(26, 35)
 
 [node name="Zkogs" type="CharacterBody2D"]
 script = ExtResource("1_xlnyc")
@@ -15,3 +18,11 @@ texture = ExtResource("1_inlcd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, -0.5)
 shape = SubResource("RectangleShape2D_xlnyc")
+
+[node name="Star Zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Star Zone"]
+position = Vector2(3, -1.5)
+shape = SubResource("RectangleShape2D_djw8q")
+
+[connection signal="area_entered" from="Star Zone" to="." method="OnStarZoneAreaEntered"]

@@ -1,22 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://be2w1m0lk6ihy"]
+[gd_scene load_steps=10 format=3 uid="uid://be2w1m0lk6ihy"]
 
+[ext_resource type="Script" uid="uid://es6a7vbn535s" path="res://Game.cs" id="1_272bh"]
+[ext_resource type="Script" uid="uid://bubv1dlkrev2o" path="res://Main.cs" id="1_efxa6"]
 [ext_resource type="PackedScene" uid="uid://1cfqcsf1c8ap" path="res://zkogs.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bma4x736f3vks" path="res://Beam.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://brxj6v5vi6oyo" path="res://floor.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bq7jtblhcis3s" path="res://long_spinning_laser.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cd3er3cqalgkk" path="res://Laser_Paterns/laser_patern_1.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cam12eeu0kmkg" path="res://Coin_Paterns/pattern_1.tscn" id="9_4c57u"]
+[ext_resource type="PackedScene" uid="uid://fu2r05tmxd23" path="res://Laser_Paterns/laser_patern_2.tscn" id="9_efxa6"]
+[ext_resource type="PackedScene" uid="uid://bnbxhs0vxl3gm" path="res://Coin_Paterns/pattern_zkogs.tscn" id="9_kek77"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_efxa6")
 
 [node name="Game" type="Node" parent="."]
+script = ExtResource("1_272bh")
 
 [node name="Zkogs" parent="Game" instance=ExtResource("1_ig7tw")]
 position = Vector2(243, 216)
-
-[node name="StaticBody2D" parent="Game" instance=ExtResource("2_0xm2m")]
-position = Vector2(491, 55)
-
-[node name="StaticBody2D2" parent="Game" instance=ExtResource("2_0xm2m")]
-position = Vector2(647, 286)
 
 [node name="Floor" parent="Game" instance=ExtResource("3_h2yge")]
 position = Vector2(33, 426)
@@ -24,5 +25,27 @@ position = Vector2(33, 426)
 [node name="Ceiling" parent="Game" instance=ExtResource("3_h2yge")]
 position = Vector2(32, 2)
 
-[node name="Long Laser" parent="Game" instance=ExtResource("4_1bvp3")]
-position = Vector2(802, 149)
+[node name="Long Spinning Laser" parent="Game" instance=ExtResource("6_7mycd")]
+position = Vector2(636, 212)
+
+[node name="SpawnMarker" type="Marker2D" parent="Game"]
+position = Vector2(951, 31)
+
+[node name="SpawnTimer" type="Timer" parent="Game"]
+wait_time = 2.0
+autostart = true
+
+[node name="Pattern_Zkogs" parent="Game" instance=ExtResource("9_kek77")]
+position = Vector2(741, 236)
+
+[node name="pattern_1" parent="Game" instance=ExtResource("9_4c57u")]
+position = Vector2(1251, 115)
+
+[node name="LaserPatern 1" parent="Game" instance=ExtResource("8_5vw27")]
+position = Vector2(1702, 28)
+
+[node name="Laser_Patern_2" parent="." instance=ExtResource("9_efxa6")]
+position = Vector2(2196, 30)
+
+[connection signal="StarPickUp" from="Game/Zkogs" to="Game" method="StarPickUp"]
+[connection signal="timeout" from="Game/SpawnTimer" to="Game" method="OnSpawnTimerTimeOut"]

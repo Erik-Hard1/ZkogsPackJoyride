@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch0foqav6a20n"]
+
+[ext_resource type="PackedScene" uid="uid://bma4x736f3vks" path="res://Beam.tscn" id="1_uff3k"]
+[ext_resource type="Script" uid="uid://iwel3eg0keps" path="res://SpinningLaser.cs" id="2_5p52n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uff3k"]
+size = Vector2(22.25, 113)
+
+[node name="Spinning Laser" instance=ExtResource("1_uff3k")]
+script = ExtResource("2_5p52n")
+
+[node name="Sprite2D2" parent="." index="0"]
+position = Vector2(-0.99996, -43)
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(-0.99996, 46)
+
+[node name="Sprite2D3" parent="." index="2"]
+position = Vector2(-0.99996, -43)
+
+[node name="BeamPlaceholder" parent="." index="3"]
+position = Vector2(-0.99996, 3)
+
+[node name="Area2D" parent="." index="4"]
+position = Vector2(-0.99996, -43)
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.24998, 45.5)
+shape = SubResource("RectangleShape2D_uff3k")
+
+[node name="CollisionShape2D" parent="." index="5"]
+position = Vector2(4.00543e-05, 1.5)
+shape = null

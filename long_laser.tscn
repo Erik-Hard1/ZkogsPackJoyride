@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://rfhn68n8bso6"]
+[gd_scene load_steps=5 format=3 uid="uid://rfhn68n8bso6"]
 
 [ext_resource type="Script" uid="uid://74nlmk7hevjr" path="res://Beam.cs" id="1_n36s2"]
 [ext_resource type="Texture2D" uid="uid://cqba0xrcv1760" path="res://BeamHolder PLACEHOLDER.png" id="2_i2e04"]
 [ext_resource type="Texture2D" uid="uid://bkyb3rdsdqdcr" path="res://Beam PLACEHOLDER.png" id="3_7gxb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0lgn"]
-size = Vector2(16, 108)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5mqe"]
+size = Vector2(16, 156)
 
 [node name="Long Laser" type="StaticBody2D"]
 script = ExtResource("1_n36s2")
@@ -30,9 +28,8 @@ texture = ExtResource("3_7gxb6")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 38)
+position = Vector2(0, 66)
 shape = SubResource("RectangleShape2D_r0lgn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -2)
-shape = SubResource("RectangleShape2D_g5mqe")
+position = Vector2(0.5, -10.5)

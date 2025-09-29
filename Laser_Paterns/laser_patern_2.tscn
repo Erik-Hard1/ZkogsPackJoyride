@@ -1,0 +1,21 @@
+[gd_scene load_steps=8 format=3 uid="uid://fu2r05tmxd23"]
+
+[ext_resource type="PackedScene" uid="uid://tr3l2jwqmxvk" path="res://laser.tscn" id="1_m5kg2"]
+[ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="2_epsdd"]
+[ext_resource type="PackedScene" uid="uid://bq7jtblhcis3s" path="res://long_spinning_laser.tscn" id="3_fh82p"]
+[ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="4_yybev"]
+[ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="5_60chl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fufqo"]
+scenes/1/scene = ExtResource("1_m5kg2")
+scenes/2/scene = ExtResource("2_epsdd")
+scenes/3/scene = ExtResource("3_fh82p")
+scenes/4/scene = ExtResource("4_yybev")
+scenes/5/scene = ExtResource("5_60chl")
+
+[sub_resource type="TileSet" id="TileSet_lemd3"]
+sources/0 = SubResource("TileSetScenesCollectionSource_fufqo")
+
+[node name="Laser_Patern_2" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 18, 0, 10, 0, 0, 0, 0, 0, 0, 0, 4, 0)
+tile_set = SubResource("TileSet_lemd3")
