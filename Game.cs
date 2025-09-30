@@ -7,9 +7,11 @@ public partial class Game : Node
 	public int starCount = 0;
 	public int speed = 150;
 	public int score = 0;
-	public List<> Laser_List = [];
+	public List<PackedScene> Laser_List = [];
 	[Export]
 	public PackedScene Spawner { get; set; }
+
+	public Marker2D LaserSpawn;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -27,7 +29,7 @@ public partial class Game : Node
 				else
 				{
 					GD.Print($"Found file: {fileName}");
-					ResourceLoader.Load<PackedScene>("res://scene.tscn")
+					Laser_List.Add(ResourceLoader.Load<PackedScene>("res://scene.tscn"));
 				}
 				fileName = dir.GetNext();
 			}
@@ -36,13 +38,15 @@ public partial class Game : Node
 		{
 			GD.Print("An error occurred when trying to access the path.");
 		}
+
+		LaserSpawn = GetNode<Marker2D>("SpawnMarker");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		score += speed;
-		GD.Print(Math.Floor(score * 0.001));
+		//sGD.Print(Math.Floor(score * 0.001));
 	}
 	public void StarPickUp()
 	{
@@ -52,33 +56,15 @@ public partial class Game : Node
 
 	public void OnSpawnTimerTimeOut()
 	{
+		GD.Print("Spawning Laser TinmoeOut");
+		Random rand = new Random();
+		int random = rand.Next(Laser_List.Count);
 
-		var thing = Spawner.Instantiate<TileMapLayer>();
-		AddChild(thing);
+		var laser = Laser_List[random].Instantiate<TileMapLayer>();
+		var position = LaserSpawn.Position;
 
-		// Create the objects.
-		var node = new Node2D();
-		var body = new RigidBody2D();
-		var collision = new CollisionShape2D();
+		AddChild(laser);
 
-		// Create the object hierarchy.
-		body.AddChild(collision);
-		node.AddChild(body);
-
-		// Change owner of `body`, but not of `collision`.
-		body.Owner = node;
-		var scene = new PackedScene();
-
-		// Only `node` and `body` are now packed.
-		Error result = scene.Pack(node);
-		if (result == Error.Ok)
-		{
-			Error error = ResourceSaver.Save(scene, "res://path/name.tscn"); // Or "user://..."
-			if (error != Error.Ok)
-			{
-				GD.PushError("An error occurred while saving the scene to disk.");
-			}
-		}
 	}
 
 	public void DirContents(string path)
