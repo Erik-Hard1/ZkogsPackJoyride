@@ -17,4 +17,5 @@ scenes/5/scene = ExtResource("5_uhs4r")
 sources/0 = SubResource("TileSetScenesCollectionSource_fufqo")
 
 [node name="LaserPatern 1" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 5, 0)
 tile_set = SubResource("TileSet_lemd3")

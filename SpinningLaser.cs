@@ -18,8 +18,6 @@ public partial class SpinningLaser : StaticBody2D
 		var position = Position;
 		position.X += speed * (float)delta;
 
-		
-
 		Rotate((float)rotationSpeed);
 
 		Position = position;

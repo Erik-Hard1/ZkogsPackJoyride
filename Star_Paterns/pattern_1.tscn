@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=4 uid="uid://cam12eeu0kmkg"]
 
-[ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="1_haej0"]
+[ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="1_amen0"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kfdsr"]
-scenes/1/scene = ExtResource("1_haej0")
+scenes/1/scene = ExtResource("1_amen0")
 
 [sub_resource type="TileSet" id="TileSet_hq3ld"]
 sources/0 = SubResource("TileSetScenesCollectionSource_kfdsr")
