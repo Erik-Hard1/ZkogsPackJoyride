@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="4_ublec"]
 [ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="5_uhs4r"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fufqo"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ibdd1"]
 scenes/1/scene = ExtResource("1_flcug")
 scenes/2/scene = ExtResource("2_oljd3")
 scenes/3/scene = ExtResource("3_2me4b")
@@ -14,8 +14,13 @@ scenes/4/scene = ExtResource("4_ublec")
 scenes/5/scene = ExtResource("5_uhs4r")
 
 [sub_resource type="TileSet" id="TileSet_lemd3"]
-sources/0 = SubResource("TileSetScenesCollectionSource_fufqo")
+sources/0 = SubResource("TileSetScenesCollectionSource_ibdd1")
 
 [node name="LaserPatern 1" type="TileMapLayer"]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 5, 0)
 tile_set = SubResource("TileSet_lemd3")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(9, 9)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(12, 344)

@@ -85,7 +85,7 @@ public partial class Game : Node
 	public override void _Process(double delta)
 	{
 		score += speed;
-		//sGD.Print(Math.Floor(score * 0.001));
+		//GD.Print(Math.Floor(score * 0.001));
 	}
 	public void StarPickUp()
 	{
@@ -108,7 +108,7 @@ public partial class Game : Node
 				var star = Star_List[random].Instantiate<TileMapLayer>();
 				var position = LaserSpawn.Position;
 
-				position.Y += rand.Next(50, (int)GetViewport().GetVisibleRect().Size.Y - 50);
+				position.Y += rand.Next(50, (int)GetViewport().GetVisibleRect().Size.Y - 100);
 				star.Position = position;
 
 
@@ -143,7 +143,7 @@ public partial class Game : Node
 				var position = LaserSpawn.Position;
 
 				laser.Position = position;
-				laser.speed = -speed;
+				//laser.speed = -speed;
 
 				AddChild(laser);
 			}
