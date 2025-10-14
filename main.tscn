@@ -27,5 +27,26 @@ position = Vector2(635, 36)
 wait_time = 3.0
 autostart = true
 
+[node name="SpeedUpTimer" type="Timer" parent="Game"]
+wait_time = 10.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Game"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.22
+anchor_right = 0.898
+anchor_bottom = 0.16
+offset_left = -2.28001
+offset_right = -400.352
+offset_bottom = -27.84
+scale = Vector2(16.9462, 1.69244)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Game/CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "Limga Fr"
+
 [connection signal="StarPickUp" from="Game/Zkogs" to="Game" method="StarPickUp"]
 [connection signal="timeout" from="Game/SpawnTimer" to="Game" method="OnSpawnTimerTimeOut"]
+[connection signal="timeout" from="Game/SpeedUpTimer" to="Game" method="OnSpeedTimerTimeOut"]

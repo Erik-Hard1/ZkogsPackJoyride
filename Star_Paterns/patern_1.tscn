@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://cam12eeu0kmkg"]
+[gd_scene load_steps=5 format=4 uid="uid://cam12eeu0kmkg"]
 
 [ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="1_amen0"]
+[ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="2_w2btj"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kfdsr"]
 scenes/1/scene = ExtResource("1_amen0")
@@ -11,3 +12,6 @@ sources/0 = SubResource("TileSetScenesCollectionSource_kfdsr")
 [node name="pattern_1" type="TileMapLayer"]
 tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAQD+/wAAAAAAAAAAAQD//wAAAAAAAAAAAQAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAQACAP//AAAAAAAAAQAEAP//AAAAAAAAAQAFAP//AAAAAAAAAQADAP//AAAAAAAAAQAGAP//AAAAAAAAAQAHAP7/AAAAAAAAAQAIAP7/AAAAAAAAAQAJAP7/AAAAAAAAAQAKAP7/AAAAAAAAAQALAP7/AAAAAAAAAQAMAP7/AAAAAAAAAQANAP7/AAAAAAAAAQAOAP7/AAAAAAAAAQAPAP7/AAAAAAAAAQAQAP7/AAAAAAAAAQARAP//AAAAAAAAAQASAP//AAAAAAAAAQATAP//AAAAAAAAAQAUAP//AAAAAAAAAQAVAP//AAAAAAAAAQAWAAAAAAAAAAAAAQAXAAAAAAAAAAAAAQAYAAAAAAAAAAAAAQAZAAAAAAAAAAAAAQAaAAAAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_hq3ld")
+script = ExtResource("2_w2btj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

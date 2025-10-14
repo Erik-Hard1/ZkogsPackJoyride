@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd3er3cqalgkk"]
+[gd_scene load_steps=8 format=3 uid="uid://cd3er3cqalgkk"]
 
 [ext_resource type="PackedScene" uid="uid://tr3l2jwqmxvk" path="res://laser.tscn" id="1_6rfj8"]
 [ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="2_vcf7i"]
 [ext_resource type="PackedScene" uid="uid://bq7jtblhcis3s" path="res://long_spinning_laser.tscn" id="3_3jxil"]
 [ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="4_5267m"]
+[ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="5_e1so1"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fufqo"]
 scenes/1/scene = ExtResource("1_6rfj8")
@@ -17,3 +18,9 @@ sources/0 = SubResource("TileSetScenesCollectionSource_fufqo")
 [node name="LaserPatern 1" type="TileMapLayer"]
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 14, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 1, 0)
 tile_set = SubResource("TileSet_lemd3")
+script = ExtResource("5_e1so1")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(262, 178)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="Screen_Exited"]

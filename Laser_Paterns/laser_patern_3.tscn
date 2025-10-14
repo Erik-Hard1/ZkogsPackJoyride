@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cwqxvrn35gr12"]
+[gd_scene load_steps=9 format=4 uid="uid://cwqxvrn35gr12"]
 
 [ext_resource type="PackedScene" uid="uid://tr3l2jwqmxvk" path="res://laser.tscn" id="1_5c2g5"]
 [ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="2_4sgvf"]
 [ext_resource type="PackedScene" uid="uid://bq7jtblhcis3s" path="res://long_spinning_laser.tscn" id="3_c448q"]
 [ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="4_6ln5k"]
 [ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="5_xr6xv"]
+[ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="6_4sgvf"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ibdd1"]
 scenes/1/scene = ExtResource("1_5c2g5")
@@ -19,3 +20,9 @@ sources/0 = SubResource("TileSetScenesCollectionSource_ibdd1")
 [node name="LaserPatern 1" type="TileMapLayer"]
 tile_map_data = PackedByteArray("AAABAA8AAAAAAAAAAQARAAAAAAAAAAAAAQABAAYAAAAAAAAABQACAAYAAAAAAAAABQADAAYAAAAAAAAABQAHAAYAAAAAAAAABQAIAAYAAAAAAAAABQAIAAcAAAAAAAAABQAHAAcAAAAAAAAABQAGAAcAAAAAAAAABQAFAAcAAAAAAAAABQAEAAcAAAAAAAAABQADAAcAAAAAAAAABQACAAcAAAAAAAAABQABAAcAAAAAAAAABQARAA4AAAAAAAAABQASAA4AAAAAAAAABQATAA4AAAAAAAAABQAUAA4AAAAAAAAABQAVAA4AAAAAAAAABQAWAA4AAAAAAAAABQAXAA4AAAAAAAAABQAXAA8AAAAAAAAABQAWAA8AAAAAAAAABQAVAA8AAAAAAAAABQAUAA8AAAAAAAAABQATAA8AAAAAAAAABQASAA8AAAAAAAAABQARAA8AAAAAAAAABQAEAAYAAAAAAAAABQAFAAYAAAAAAAAABQAGAAYAAAAAAAAABQA=")
 tile_set = SubResource("TileSet_lemd3")
+script = ExtResource("6_4sgvf")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(399, 191)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="Screen_Exited"]
