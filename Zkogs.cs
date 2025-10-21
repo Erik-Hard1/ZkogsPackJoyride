@@ -5,6 +5,8 @@ public partial class Zkogs : CharacterBody2D
 {
 	[Signal]
 	public delegate void StarPickUpEventHandler();
+	[Signal]
+	public delegate void DieEventHandler();
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -50.0f;
 
@@ -46,6 +48,16 @@ public partial class Zkogs : CharacterBody2D
 			//GD.Print("Star Picked Up");
 			EmitSignal(SignalName.StarPickUp);
 			area2d.QueueFree();
+		}
+	}
+
+	public void OnHitBoxBodyEntered(Area2D area2d)
+	{
+		//GD.Print("Collision");
+		if (area2d.GetParent() is Beam || area2d.GetParent() is SpinningLaser || area2d.GetParent() is FastSpinningLaser || area2d.GetParent() is CounterSpinningLaser)
+		{
+			GD.Print("Die");
+			EmitSignal(SignalName.Die);
 		}
 	}
 

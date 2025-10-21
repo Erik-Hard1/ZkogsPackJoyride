@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ytjr75mi818w"]
+
+[ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="1_10s8c"]
+[ext_resource type="Script" uid="uid://cs4ht3cm4vo45" path="res://FastSpinningLaser.cs" id="2_4gaf0"]
+[ext_resource type="Texture2D" uid="uid://bkyb3rdsdqdcr" path="res://Beam PLACEHOLDER.png" id="3_8wo62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3uy6"]
+size = Vector2(20, 216)
+
+[node name="Long Spinning Laser" instance=ExtResource("1_10s8c")]
+script = ExtResource("2_4gaf0")
+
+[node name="Sprite2D2" parent="." index="0"]
+position = Vector2(0, -97)
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(-1, 98)
+
+[node name="BeamPlaceholder2" type="Sprite2D" parent="." index="4"]
+position = Vector2(-5.96046e-08, -0.500004)
+scale = Vector2(1, 5.21875)
+texture = ExtResource("3_8wo62")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.87498, 44)
+shape = SubResource("RectangleShape2D_t3uy6")
+
+[node name="CollisionShape2D" parent="." index="6"]
+position = Vector2(0.25002, -26.5)

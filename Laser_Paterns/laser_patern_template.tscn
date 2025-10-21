@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dceqbc4md3ocj" path="res://Counter Long Spinning Laser.tscn" id="6_2me4b"]
 [ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="7_2me4b"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oljd3"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2me4b"]
 scenes/1/scene = ExtResource("1_flcug")
 scenes/2/scene = ExtResource("2_oljd3")
 scenes/3/scene = ExtResource("3_2me4b")
@@ -17,7 +17,7 @@ scenes/5/scene = ExtResource("5_uhs4r")
 scenes/6/scene = ExtResource("6_2me4b")
 
 [sub_resource type="TileSet" id="TileSet_lemd3"]
-sources/0 = SubResource("TileSetScenesCollectionSource_oljd3")
+sources/0 = SubResource("TileSetScenesCollectionSource_2me4b")
 
 [node name="LaserPatern 1" type="TileMapLayer"]
 tile_set = SubResource("TileSet_lemd3")

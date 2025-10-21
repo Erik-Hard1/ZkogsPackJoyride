@@ -12,10 +12,16 @@ size = Vector2(26, 35)
 [node name="Zkogs" type="CharacterBody2D"]
 script = ExtResource("1_xlnyc")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, -0.5)
+shape = SubResource("RectangleShape2D_xlnyc")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_inlcd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hit Box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit Box"]
 position = Vector2(5.5, -0.5)
 shape = SubResource("RectangleShape2D_xlnyc")
 
@@ -25,4 +31,5 @@ shape = SubResource("RectangleShape2D_xlnyc")
 position = Vector2(3, -1.5)
 shape = SubResource("RectangleShape2D_djw8q")
 
+[connection signal="area_entered" from="Hit Box" to="." method="OnHitBoxBodyEntered"]
 [connection signal="area_entered" from="Star Zone" to="." method="OnStarZoneAreaEntered"]

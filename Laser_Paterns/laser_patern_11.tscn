@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=4 uid="uid://dxpt18mwj0w8i"]
+
+[ext_resource type="PackedScene" uid="uid://tr3l2jwqmxvk" path="res://laser.tscn" id="1_pst0r"]
+[ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="2_lx5qg"]
+[ext_resource type="PackedScene" uid="uid://bq7jtblhcis3s" path="res://long_spinning_laser.tscn" id="3_l17jn"]
+[ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="4_rnqev"]
+[ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="5_agiwh"]
+[ext_resource type="PackedScene" uid="uid://dceqbc4md3ocj" path="res://Counter Long Spinning Laser.tscn" id="6_8uq7s"]
+[ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="7_5j74w"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oljd3"]
+scenes/1/scene = ExtResource("1_pst0r")
+scenes/2/scene = ExtResource("2_lx5qg")
+scenes/3/scene = ExtResource("3_l17jn")
+scenes/4/scene = ExtResource("4_rnqev")
+scenes/5/scene = ExtResource("5_agiwh")
+scenes/6/scene = ExtResource("6_8uq7s")
+
+[sub_resource type="TileSet" id="TileSet_lemd3"]
+sources/0 = SubResource("TileSetScenesCollectionSource_oljd3")
+
+[node name="LaserPatern 1" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAAAAMAAAAAAAAAAwAAAAQAAAAAAAAAAwAAAAUAAAAAAAAAAwAAAAYAAAAAAAAAAwABAAMAAAAAAAAAAwABAAQAAAAAAAAAAwABAAUAAAAAAAAAAwABAAYAAAAAAAAAAwACAAMAAAAAAAAAAwACAAQAAAAAAAAAAwACAAUAAAAAAAAAAwACAAYAAAAAAAAAAwADAAMAAAAAAAAAAwADAAQAAAAAAAAAAwADAAUAAAAAAAAAAwADAAYAAAAAAAAAAwAEAAMAAAAAAAAAAwAEAAQAAAAAAAAAAwAEAAUAAAAAAAAAAwAEAAYAAAAAAAAAAwAFAAMAAAAAAAAABgAFAAQAAAAAAAAABgAFAAUAAAAAAAAABgAFAAYAAAAAAAAABgAGAAMAAAAAAAAABgAGAAQAAAAAAAAABgAGAAUAAAAAAAAABgAGAAYAAAAAAAAABgAHAAMAAAAAAAAABgAHAAQAAAAAAAAABgAHAAUAAAAAAAAABgAHAAYAAAAAAAAABgAIAAMAAAAAAAAABgAIAAQAAAAAAAAABgAIAAUAAAAAAAAABgAIAAYAAAAAAAAABgAJAAMAAAAAAAAABgAJAAQAAAAAAAAABgAJAAUAAAAAAAAABgAJAAYAAAAAAAAABgAAAAEAAAAAAAAAAwAAAAIAAAAAAAAAAwABAAEAAAAAAAAAAwABAAIAAAAAAAAAAwACAAEAAAAAAAAAAwACAAIAAAAAAAAAAwADAAEAAAAAAAAAAwADAAIAAAAAAAAAAwAEAAEAAAAAAAAAAwAEAAIAAAAAAAAAAwAFAAEAAAAAAAAABgAFAAIAAAAAAAAABgAGAAEAAAAAAAAABgAGAAIAAAAAAAAABgAHAAEAAAAAAAAABgAHAAIAAAAAAAAABgAIAAEAAAAAAAAABgAIAAIAAAAAAAAABgAJAAEAAAAAAAAABgAJAAIAAAAAAAAABgA=")
+tile_set = SubResource("TileSet_lemd3")
+script = ExtResource("7_5j74w")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(9, 9)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(12, 344)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(495, 176)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="Screen_Exited"]

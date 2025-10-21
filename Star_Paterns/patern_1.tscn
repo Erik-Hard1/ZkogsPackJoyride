@@ -15,3 +15,4 @@ tile_set = SubResource("TileSet_hq3ld")
 script = ExtResource("2_w2btj")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(446, 15)

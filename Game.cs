@@ -20,12 +20,23 @@ public partial class Game : Node
 	public Timer SpawnerTimer;
 	public Timer SpeedUpTimer;
 
+	public RichTextLabel distanceContainer;
+	public RichTextLabel starContainer;
+	public RichTextLabel FPSContainer;
 	public Marker2D LaserSpawn;
+	[Signal]
+	public delegate void DeathMenuEventHandler();
+
+	public int frameCount = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+
 		SpawnerTimer = GetNode<Timer>("SpawnTimer");
 		SpeedUpTimer = GetNode<Timer>("SpeedUpTimer");
+		distanceContainer = GetNode<RichTextLabel>("CanvasLayer/HBoxContainer/DistanceTextLabel");
+		starContainer = GetNode<RichTextLabel>("CanvasLayer/HBoxContainer/StarTextLabel");
+		FPSContainer = GetNode<RichTextLabel>("CanvasLayer/HBoxContainer/FPSTextLabel");
 		//LASER PATERN LIST
 		using var dir = DirAccess.Open("res://Laser_Paterns");
 		if (dir != null)
@@ -83,25 +94,51 @@ public partial class Game : Node
 		{
 			GD.Print("An error occurred when trying to access the path.");
 		}
+		/*
 		foreach (var laser in Laser_List)
 		{
 			GD.Print(laser);
 		}
+		*/
 		LaserSpawn = GetNode<Marker2D>("SpawnMarker");
+		GetTree().Paused = true;
 	}
+	
+	public void Play()
+    {
+		GetTree().Paused = false;
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		score += speed;
 		//GD.Print(Math.Floor(score * 0.001));
+
+		distanceContainer.Text = "Distance: " + Convert.ToString(score / 800) + "m";
+
+		frameCount++;
 	}
 	public void StarPickUp()
 	{
 		starCount++;
-		GD.Print("Stars" + starCount);
+		//GD.Print("Stars" + starCount);
+		starContainer.Text = "Stars: " + Convert.ToString(starCount);
 	}
 
+	public void Die()
+	{
+		//temproär
+		GetTree().Paused = true;
+		EmitSignal(SignalName.DeathMenu);
+		//GetTree().CallDeferred("reload_current_scene");
+    }
+
+	public void OneSecondTimeOut()
+	{
+		FPSContainer.Text = "Framerate: " + Convert.ToString(frameCount);
+		frameCount = 0;
+    }
 	public void OnSpawnTimerTimeOut()
 	{
 		GD.Print("Spawning TinmoeOut");
@@ -135,7 +172,7 @@ public partial class Game : Node
 		if (lastType == "laser")
 		{
 			//Check if its time for coin heaven
-			int chance = typeCounter * 2 + 5;
+			int chance = typeCounter + 5;
 			if (chance > 25) { chance = 20; }
 
 			if (rand.Next(100) < chance)
@@ -150,15 +187,19 @@ public partial class Game : Node
 				//Spawn laser
 				typeCounter += 1;
 				int random = rand.Next(Laser_List.Count);
-				var laser = Laser_List[random].Instantiate<LaserPaternTemplate>();
-				var position = LaserSpawn.Position;
+				if (random > 0)
+				{
+					var laser = Laser_List[random].Instantiate<LaserPaternTemplate>();
+					var position = LaserSpawn.Position;
 
-				laser.Position = position;
-				laser.speed = -speed;
+					laser.Position = position;
+					laser.speed = -speed;
 
-				totalSpawns += 1;
+					totalSpawns += 1;
 
-				AddChild(laser);
+					AddChild(laser);
+				}
+
 			}
 			SpawnerTimer.WaitTime = SetTimer;
 
@@ -310,9 +351,16 @@ public partial class Game : Node
 				SpeedUpTimer.WaitTime = 20;
 				break;
 
-			case 55:
 			case 56:
-			default:
+			case 57:
+			case 58:
+			case 59:
+			case 60:
+			case 61:
+			case 62:
+			case 63:
+			case 64:
+			
 
 				GD.Print("EHj!" + totalSpawns);
 				SetTimer = 1.5;
@@ -320,8 +368,45 @@ public partial class Game : Node
 				SpeedUpTimer.WaitTime = 10;
 				totalSpawns += 5;
 				break;
-		
-			
+			case 65:
+			case 66:
+			case 67:
+			case 68:
+			case 69:
+			case 70:
+			case 71:
+			case 72:
+
+				GD.Print("EHj!" + totalSpawns);
+				SetTimer = 1.4;
+				speed = 475;
+				SpeedUpTimer.WaitTime = 10;
+				totalSpawns += 5;
+				break;
+
+
+			default:
+				GD.Print("Max Speed!" + totalSpawns);
+				
+				if(speed < 800)
+                {
+                    speed += 25;
+
+					if (speed < 600)
+					{
+						SetTimer -= 0.1;
+					}
+                    else
+                    {
+						SetTimer += 0.05;
+                    }
+                }
+				
+				SpeedUpTimer.WaitTime = 15;
+				totalSpawns += 5;
+				break;
+
+
 		}
 
 

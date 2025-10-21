@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://bctgdmxggblsw"]
+
+[ext_resource type="Texture2D" uid="uid://yr6ltk6wfjse" path="res://WARNIGN.png" id="1_h3xjo"]
+[ext_resource type="Script" uid="uid://da0k720cllb6x" path="res://MissileSpawner.cs" id="2_daemh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daemh"]
+atlas = ExtResource("1_h3xjo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78eup"]
+atlas = ExtResource("1_h3xjo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30xqb"]
+atlas = ExtResource("1_h3xjo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6v8g"]
+atlas = ExtResource("1_h3xjo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufdae"]
+atlas = ExtResource("1_h3xjo")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsk02"]
+atlas = ExtResource("1_h3xjo")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8lwj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daemh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78eup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30xqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78eup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6v8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufdae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsk02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6v8g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_h3xjo"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_daemh"]
+_data = {
+&"new_animation": SubResource("Animation_h3xjo")
+}
+
+[node name="Warning" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_y8lwj")
+autoplay = "default"
+frame_progress = 0.519432
+script = ExtResource("2_daemh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_daemh")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnMissileTimerTimeOut"]
