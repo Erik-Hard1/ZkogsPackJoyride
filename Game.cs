@@ -154,7 +154,7 @@ public partial class Game : Node
 				var star = Star_List[random].Instantiate<LaserPaternTemplate>();
 				var position = LaserSpawn.Position;
 
-				position.Y += rand.Next(50, (int)GetViewport().GetVisibleRect().Size.Y - 100);
+				position.Y += rand.Next(80, (int)GetViewport().GetVisibleRect().Size.Y - 180);
 				star.Position = position;
 
 				star.speed = -speed;
@@ -172,8 +172,8 @@ public partial class Game : Node
 		if (lastType == "laser")
 		{
 			//Check if its time for coin heaven
-			int chance = typeCounter + 5;
-			if (chance > 25) { chance = 20; }
+			int chance = typeCounter + 2;
+			if (chance > 15) { chance = 10; }
 
 			if (rand.Next(100) < chance)
 			{

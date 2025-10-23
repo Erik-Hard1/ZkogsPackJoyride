@@ -54,7 +54,7 @@ public partial class Zkogs : CharacterBody2D
 	public void OnHitBoxBodyEntered(Area2D area2d)
 	{
 		//GD.Print("Collision");
-		if (area2d.GetParent() is Beam || area2d.GetParent() is SpinningLaser || area2d.GetParent() is FastSpinningLaser || area2d.GetParent() is CounterSpinningLaser)
+		if (area2d.GetParent() is Beam || area2d.GetParent() is SpinningLaser || area2d.GetParent() is FastSpinningLaser || area2d.GetParent() is CounterSpinningLaser || area2d.GetParent() is Missile)
 		{
 			GD.Print("Die");
 			EmitSignal(SignalName.Die);

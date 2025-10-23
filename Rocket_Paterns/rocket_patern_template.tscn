@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://chfa01h0ftmux"]
+
+[ext_resource type="PackedScene" uid="uid://jrl5e32u3xqr" path="res://Missile.tscn" id="1_7wfb7"]
+[ext_resource type="PackedScene" uid="uid://bctgdmxggblsw" path="res://MissileSpawner.tscn" id="2_ykty0"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_14ytr"]
+scenes/1/scene = ExtResource("1_7wfb7")
+scenes/2/scene = ExtResource("2_ykty0")
+
+[sub_resource type="TileSet" id="TileSet_6jv0o"]
+sources/0 = SubResource("TileSetScenesCollectionSource_14ytr")
+
+[node name="RocketPaternTemplate" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 25, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0)
+tile_set = SubResource("TileSet_6jv0o")
