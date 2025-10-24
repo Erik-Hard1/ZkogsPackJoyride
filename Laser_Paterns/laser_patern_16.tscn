@@ -1,0 +1,40 @@
+[gd_scene load_steps=12 format=4 uid="uid://bhigqjp3ewqjm"]
+
+[ext_resource type="PackedScene" uid="uid://tr3l2jwqmxvk" path="res://laser.tscn" id="1_pmnqh"]
+[ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="2_x4kk6"]
+[ext_resource type="PackedScene" uid="uid://bq7jtblhcis3s" path="res://long_spinning_laser.tscn" id="3_xlvoc"]
+[ext_resource type="PackedScene" uid="uid://ch0foqav6a20n" path="res://spinning_laser.tscn" id="4_7cx06"]
+[ext_resource type="PackedScene" uid="uid://0y0q2yq5y4k2" path="res://star.tscn" id="5_vnyed"]
+[ext_resource type="PackedScene" uid="uid://dceqbc4md3ocj" path="res://Counter Long Spinning Laser.tscn" id="6_ufnu1"]
+[ext_resource type="PackedScene" uid="uid://jrl5e32u3xqr" path="res://Missile.tscn" id="7_u65kh"]
+[ext_resource type="PackedScene" uid="uid://bctgdmxggblsw" path="res://MissileSpawner.tscn" id="8_he3j7"]
+[ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="9_ue14r"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uhs4r"]
+scenes/1/scene = ExtResource("1_pmnqh")
+scenes/2/scene = ExtResource("2_x4kk6")
+scenes/3/scene = ExtResource("3_xlvoc")
+scenes/4/scene = ExtResource("4_7cx06")
+scenes/5/scene = ExtResource("5_vnyed")
+scenes/6/scene = ExtResource("6_ufnu1")
+scenes/7/scene = ExtResource("7_u65kh")
+scenes/8/scene = ExtResource("8_he3j7")
+
+[sub_resource type="TileSet" id="TileSet_lemd3"]
+sources/0 = SubResource("TileSetScenesCollectionSource_uhs4r")
+
+[node name="LaserPatern 1" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAD3/wEAAAAAAAAACAD5/wQAAAAAAAAACAD7/wcAAAAAAAAACAD9/woAAAAAAAAACAAMAAEAAAAAAAAABwARAAQAAAAAAAAABwAVAAcAAAAAAAAABwAaAAoAAAAAAAAABwA=")
+tile_set = SubResource("TileSet_lemd3")
+script = ExtResource("9_ue14r")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(9, 9)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(12, 344)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(495, 176)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="Screen_Exited"]

@@ -109,6 +109,30 @@ layout_mode = 2
 text = "Back To Menu
 "
 
+[node name="PauseButton" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="PauseButton"]
+offset_left = 3.0
+offset_top = 392.0
+offset_right = 63.0
+offset_bottom = 423.0
+text = "Pause
+"
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Button" type="Button" parent="PauseMenu"]
+anchors_preset = -1
+anchor_right = 0.411
+anchor_bottom = 1.211
+offset_left = 70.0
+offset_top = 392.0
+offset_right = -126.464
+offset_bottom = -90.4641
+text = "Menu
+"
+
 [connection signal="Play" from="." to="Game" method="Play"]
 [connection signal="DeathMenu" from="Game" to="." method="DeathMenu"]
 [connection signal="Die" from="Game/Zkogs" to="Game" method="Die"]
@@ -118,3 +142,5 @@ text = "Back To Menu
 [connection signal="timeout" from="Game/OneSecondTimer" to="Game" method="OneSecondTimeOut"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/Button" to="." method="OnPlayButtonPressed"]
 [connection signal="pressed" from="DeathScreen/VBoxContainer/Back TO Menu" to="." method="RestartButtonPressed"]
+[connection signal="pressed" from="PauseButton/Button" to="." method="PauseButtonPressed"]
+[connection signal="pressed" from="PauseMenu/Button" to="." method="RestartButtonPressed"]

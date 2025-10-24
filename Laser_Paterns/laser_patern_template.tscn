@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtfyjttp32wrv"]
+[gd_scene load_steps=12 format=3 uid="uid://dtfyjttp32wrv"]
 
 [ext_resource type="PackedScene" uid="uid://tr3l2jwqmxvk" path="res://laser.tscn" id="1_flcug"]
 [ext_resource type="PackedScene" uid="uid://rfhn68n8bso6" path="res://long_laser.tscn" id="2_oljd3"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dceqbc4md3ocj" path="res://Counter Long Spinning Laser.tscn" id="6_2me4b"]
 [ext_resource type="Script" uid="uid://5a6b5xv7vmrb" path="res://Laser_Paterns/LaserPaternTemplate.cs" id="7_2me4b"]
 [ext_resource type="PackedScene" uid="uid://jrl5e32u3xqr" path="res://Missile.tscn" id="7_ublec"]
+[ext_resource type="PackedScene" uid="uid://bctgdmxggblsw" path="res://MissileSpawner.tscn" id="8_uhs4r"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2me4b"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uhs4r"]
 scenes/1/scene = ExtResource("1_flcug")
 scenes/2/scene = ExtResource("2_oljd3")
 scenes/3/scene = ExtResource("3_2me4b")
@@ -17,9 +18,10 @@ scenes/4/scene = ExtResource("4_ublec")
 scenes/5/scene = ExtResource("5_uhs4r")
 scenes/6/scene = ExtResource("6_2me4b")
 scenes/7/scene = ExtResource("7_ublec")
+scenes/8/scene = ExtResource("8_uhs4r")
 
 [sub_resource type="TileSet" id="TileSet_lemd3"]
-sources/0 = SubResource("TileSetScenesCollectionSource_2me4b")
+sources/0 = SubResource("TileSetScenesCollectionSource_uhs4r")
 
 [node name="LaserPatern 1" type="TileMapLayer"]
 tile_set = SubResource("TileSet_lemd3")
